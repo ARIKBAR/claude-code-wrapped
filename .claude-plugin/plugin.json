@@ -1,0 +1,9 @@
+{
+  "name": "claude-code-wrapped",
+  "description": "Claude Wrapped — a Spotify-Wrapped-style animated recap of your Claude Code usage, rendered inline. Type /wrapped.",
+  "version": "1.0.0",
+  "author": { "name": "ARIKBAR" },
+  "homepage": "https://github.com/ARIKBAR/claude-code-wrapped",
+  "repository": "https://github.com/ARIKBAR/claude-code-wrapped",
+  "keywords": ["wrapped", "stats", "recap", "visualization", "fun"]
+}
