@@ -82,6 +82,14 @@
 
   window.cwfb=function(el){var sp=document.createElement('span');sp.textContent=el.getAttribute('data-fb')||'🦞';var w=parseInt(el.style.width)||80;sp.style.cssText='font-size:'+Math.round(w*0.7)+'px;line-height:1;display:block;margin:0 0 6px';sp.className=el.className;if(el.parentNode)el.parentNode.replaceChild(sp,el);};
 
+  var PK=D.peakHour||'';
+  var P_HE={owl:{h:"ינשוף<br>לילה 🦉",s:"שיא הפעילות שלך ב"+PK+". הקוד הכי טוב נכתב כשהעולם ישן.",c1:"#ינשוף",c2:"#לילה"},
+    bird:{h:"ציפור<br>בוקר 🐦",s:"שיא הפעילות שלך ב"+PK+". כובש את היום מוקדם.",c1:"#בוקר",c2:"#מוקדם"},
+    steady:{h:"בנאי<br>יציב ⚙️",s:"שיא הפעילות שלך ב"+PK+". קצב יציב לאורך כל היום.",c1:"#יציב",c2:"#ממוקד"}};
+  var P_EN={owl:{h:"The Night<br>Owl 🦉",s:"Your peak is at "+PK+". The best code is written while the world sleeps.",c1:"#nightowl",c2:"#latenight"},
+    bird:{h:"The Early<br>Bird 🐦",s:"Your peak is at "+PK+". You own the day before everyone wakes.",c1:"#earlybird",c2:"#mornings"},
+    steady:{h:"The Steady<br>Builder ⚙️",s:"Your peak is at "+PK+". A steady rhythm all day long.",c1:"#steady",c2:"#focused"}};
+  var PHE=P_HE[D.persona]||P_HE.owl, PEN=P_EN[D.persona]||P_EN.owl;
   var T={
    he:{dir:"rtl",font:"'Heebo',sans-serif",hint:"לחצו להמשך ◂",copied:"הסיכום הועתק ✓",
      copy:"⧉ העתק סיכום",img:"✦ תמונת שיתוף",again:"↺ שוב",aria:"Claude Wrapped — לחצו להמשך",
@@ -95,7 +103,7 @@
       {t:"mile",k:"איפה את/ה ביחס לכולם",b:"🔥",img:"fire",n:D.percentile,h:"העליונים",s:"לפי היקף השימוש שלך — ממש על אש. (הערכה)"},
       {t:"list",k:"פרויקטים",h:"לאן הלכה<br>האנרגיה",rows:D.projects},
       {t:"stat",k:"היום הכי עמוס",l:"השיא שלך היה ב-",head:D.busiest,n:D.busiestN,u:"// אירועים ביום אחד",c:"היום שבו פשוט לא הפסקת."},
-      {t:"mile",k:"הטיפוס שלך",kick:"סוג המפתח שלך השנה",img:"clawd",h:"ינשוף<br>לילה 🦉",s:"שיא הפעילות בחצות. הקוד הכי טוב נכתב כשהעולם ישן.",chips:["#ינשוף","#"+String(D.favModel).split(" ")[0],"#מאציל"]},
+      {t:"mile",k:"הטיפוס שלך",kick:"סוג המפתח שלך השנה",img:"clawd",h:PHE.h,s:PHE.s,chips:[PHE.c1,"#"+String(D.favModel).split(" ")[0],PHE.c2]},
       {t:"vs",k:"מתי קודדת",h:"חול מול<br>סוף-שבוע",a:["ימי חול",D.weekdayPct],bb:["סוף-שבוע",D.weekendPct],s:"קוד לא מכיר ימי מנוחה — וגם אתה לא."},
       {t:"list",k:"בקוד",h:"קראת ·<br>ערכת · כתבת",rows:D.actions},
       {t:"stat",k:"בלי מילים? לא אתכם",l:"תווים שהקלדת",n:D.chars,u:"// תווים",c:"כמו "+D.novels+" רומנים. ההודעה הכי ארוכה: "+fmt(D.longest)+" תווים."},
@@ -114,7 +122,7 @@
       {t:"mile",k:"Where you rank",b:"🔥",img:"fire",n:D.percentile,h:"top percentile",s:"By how much you used Claude Code — you're on fire. (estimate)"},
       {t:"list",k:"Projects",h:"Where the<br>energy went",rows:D.projects},
       {t:"stat",k:"Your busiest day",l:"your peak was on",head:D.busiest,n:D.busiestN,u:"// events in one day",c:"The day you just didn't stop."},
-      {t:"mile",k:"Your type",kick:"your developer type this year",img:"clawd",h:"The Night<br>Owl 🦉",s:"Peak at midnight. The best code is written while the world sleeps.",chips:["#nightowl","#"+String(D.favModel).split(" ")[0],"#delegator"]},
+      {t:"mile",k:"Your type",kick:"your developer type this year",img:"clawd",h:PEN.h,s:PEN.s,chips:[PEN.c1,"#"+String(D.favModel).split(" ")[0],PEN.c2]},
       {t:"vs",k:"When you coded",h:"Weekday vs<br>weekend",a:["Weekday",D.weekdayPct],bb:["Weekend",D.weekendPct],s:"Code doesn't take days off — and neither do you."},
       {t:"list",k:"In the code",h:"Read ·<br>Edit · Write",rows:D.actions},
       {t:"stat",k:"Lost for words? Not you",l:"characters you typed",n:D.chars,u:"// characters",c:"Like "+D.novels+" novels. Longest message: "+fmt(D.longest)+" chars."},

@@ -28,7 +28,13 @@ def emit_widget(out, lang, base):
     tot=out['totalUserPrompts'] or 1
     fam=out['toolFamilies']; models=out['models']
     fav=models[0][0] if models else 'Opus 4.8'
+    pk=out['peakHour']
+    if lang=='he': peak=('חצות' if pk==0 else 'צהריים' if pk==12 else ('%02d:00'%pk))
+    else: peak=('midnight' if pk==0 else 'noon' if pk==12 else ('%02d:00'%pk))
+    pname=out['persona']['name']
+    pkey='owl' if 'Night' in pname else ('bird' if 'Early' in pname else 'steady')
     D={
+      'persona':pkey,'peakHour':peak,
       'sessions':out['totalSessions'],'prompts':out['totalUserPrompts'],'replies':out['totalAssistantMsgs'],
       'tools':out['totalToolCalls'],'agents':out['agentRuns'],'variety':out['toolVariety'],'mcp':fam['mcp'],
       'activeDays':out['activeDays'],'busiestN':out['busiestDay']['events'],'busiest':busiest,
