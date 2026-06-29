@@ -1,0 +1,14 @@
+{
+  "name": "claude-code-wrapped",
+  "owner": { "name": "ARIKBAR" },
+  "metadata": {
+    "description": "Claude Code Wrapped — a Spotify-Wrapped-style animated recap of your Claude Code usage."
+  },
+  "plugins": [
+    {
+      "name": "claude-code-wrapped",
+      "source": "./",
+      "description": "Claude Wrapped — a Spotify-Wrapped-style animated recap of your Claude Code usage. Type /wrapped."
+    }
+  ]
+}
