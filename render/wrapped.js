@@ -92,7 +92,7 @@
   var PHE=P_HE[D.persona]||P_HE.owl, PEN=P_EN[D.persona]||P_EN.owl;
   var T={
    he:{dir:"rtl",font:"'Heebo',sans-serif",hint:"לחצו להמשך ◂",copied:"הסיכום הועתק ✓",
-     copy:"⧉ העתק סיכום",img:"✦ תמונת שיתוף",again:"↺ שוב",aria:"Claude Wrapped — לחצו להמשך",
+     copy:"⧉ העתק סיכום",img:"✦ שתף + התקנה",again:"↺ שוב",aria:"Claude Wrapped — לחצו להמשך",
      introK:"CLAUDE CODE · 2026",introA:"חמישה חודשים, אינספור שורות קוד.",introH:"ה-Wrapped<br>שלך",introB:"הנה השנה שלך במספרים.",
      recapK:"2026 · סיכום",outH:"נתראה<br>בשנה הבאה",outS:"המשיכו לבנות. אנחנו פה.",
      S:[
@@ -111,7 +111,7 @@
       {t:"mile",k:"לא עבדת לבד",b:"🤖",n:D.agents,h:"סוכני משנה",s:"ועוד "+fmt(D.mcp)+" קריאות לכלי MCP מחוברים."}
      ]},
    en:{dir:"ltr",font:"'Space Grotesk',sans-serif",hint:"tap to continue ▸",copied:"Recap copied ✓",
-     copy:"⧉ Copy recap",img:"✦ Share image",again:"↺ Replay",aria:"Claude Wrapped — tap to continue",
+     copy:"⧉ Copy recap",img:"✦ Share + install",again:"↺ Replay",aria:"Claude Wrapped — tap to continue",
      introK:"CLAUDE CODE · 2026",introA:"Five months, countless lines of code.",introH:"Your<br>Wrapped",introB:"Here's your year in numbers.",
      recapK:"2026 · recap",outH:"See you<br>next year",outS:"Keep building. We're here.",
      S:[
@@ -190,7 +190,7 @@
   function flash(m){toast.textContent=m;toast.classList.add('show');setTimeout(function(){toast.classList.remove('show');},1700);}
   function wire(){
     var c=document.getElementById('cw-copy');if(c)c.onclick=function(e){e.stopPropagation();try{navigator.clipboard.writeText(recap).then(function(){flash(L.copied);},function(){flash(L.copied);});}catch(_){flash(L.copied);}};
-    var im=document.getElementById('cw-img');if(im)im.onclick=function(e){e.stopPropagation();if(window.sendPrompt)sendPrompt(LANG==='he'?'צור תמונת שיתוף של ה-Claude Wrapped שלי: '+D.sessions+' שיחות, '+D.tools+' קריאות כלים, '+D.percentile+' העליונים, '+D.favModel+', ינשוף לילה.':'Create a share image of my Claude Wrapped: '+D.sessions+' sessions, '+D.tools+' tool calls, top '+D.percentile+', '+D.favModel+', Night Owl.');else flash(L.copied);};
+    var im=document.getElementById('cw-img');if(im)im.onclick=function(e){e.stopPropagation();var invite=(LANG==='he'?"🦞 Claude Wrapped — סיכום שנה מונפש ל-Claude Code, בתוך הטרמינל.\nהתקנה והוראות: github.com/ARIKBAR/claude-code-wrapped\nואז הקלידו /wrapped":"🦞 Claude Wrapped — an animated Claude Code year-in-review, right in your editor.\nInstall + how-to: github.com/ARIKBAR/claude-code-wrapped\nthen type /wrapped");try{navigator.clipboard.writeText(invite).then(function(){flash(L.copied);},function(){flash(L.copied);});}catch(_){flash(L.copied);}};
     var rp=document.getElementById('cw-replay');if(rp)rp.onclick=function(e){e.stopPropagation();show(0);};
   }
   nx.addEventListener('click',function(){show(i+1);});pv.addEventListener('click',function(){show(i-1);});
