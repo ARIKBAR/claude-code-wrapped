@@ -11,18 +11,40 @@ Just type **`/wrapped`**.
 
 ## Install
 
-```text
-/plugin marketplace add ARIKBAR/claude-code-wrapped
-/plugin install claude-code-wrapped@claude-code-wrapped
+The visual recap renders in the **Claude Code desktop app** and **claude.ai/code**.
+Those surfaces don't have the `/plugin` command, so install the skill by dropping its two
+files into your skills folder (the render engine + images come from the CDN — only these two
+files are needed locally):
+
+**Windows (PowerShell):**
+```powershell
+$d="$HOME\.claude\skills\wrapped"; New-Item -ItemType Directory -Force $d | Out-Null
+irm "https://raw.githubusercontent.com/ARIKBAR/claude-code-wrapped/main/skills/wrapped/SKILL.md" -OutFile "$d\SKILL.md"
+irm "https://raw.githubusercontent.com/ARIKBAR/claude-code-wrapped/main/skills/wrapped/analyze.py" -OutFile "$d\analyze.py"
 ```
 
-Then run:
+**macOS / Linux:**
+```bash
+d=~/.claude/skills/wrapped; mkdir -p "$d"
+curl -sL "https://raw.githubusercontent.com/ARIKBAR/claude-code-wrapped/main/skills/wrapped/SKILL.md" -o "$d/SKILL.md"
+curl -sL "https://raw.githubusercontent.com/ARIKBAR/claude-code-wrapped/main/skills/wrapped/analyze.py" -o "$d/analyze.py"
+```
+
+Then **restart the app** and type:
 
 ```text
 /wrapped
 ```
 
 (Scoped variants: `/wrapped --days 30`, `/wrapped --since 2026-01-01`.)
+
+### Terminal (Claude Code CLI)
+The terminal supports `/plugin` but can't render the visual widget. If you use the CLI,
+install there and view the result in the desktop app (shared `~/.claude`):
+```text
+/plugin marketplace add ARIKBAR/claude-code-wrapped
+/plugin install claude-code-wrapped@claude-code-wrapped
+```
 
 ## How it works
 
